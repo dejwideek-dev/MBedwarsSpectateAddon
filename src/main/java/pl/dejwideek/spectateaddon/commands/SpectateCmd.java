@@ -54,6 +54,7 @@ public class SpectateCmd extends BaseCommand {
                             return;
                         }
                         RemoteArena a = RemoteAPI.get().getArenaByPlayingPlayer(target);
+                        RemoteArena as = RemoteAPI.get().getArenaBySpectator(target);
 
                         if(a != null) {
                             ArenaStatus status = a.getStatus();
@@ -76,7 +77,22 @@ public class SpectateCmd extends BaseCommand {
                             return;
                         }
                         if(a == null) {
-                            player.sendMessage(colorApi.process(noInsideMsg));
+                            if(as != null) {
+                                ArenaStatus status = as.getStatus();
+
+                                if (status.equals(ArenaStatus.RUNNING)) {
+                                    player.sendMessage(colorApi.process(teleportedMsg
+                                            .replaceAll("%player%", target.getName())
+                                            .replaceAll("%arena%", a.getName())));
+                                    a.addSpectator(p);
+                                }
+                                if (status.equals(ArenaStatus.END_LOBBY)) {
+                                    player.sendMessage(colorApi.process(endingMsg));
+                                }
+                                return;
+                            }
+                            if(as == null)
+                                player.sendMessage(colorApi.process(noInsideMsg));
                         }
                     }
                     if(target == null) {
