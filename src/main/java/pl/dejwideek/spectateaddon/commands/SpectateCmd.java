@@ -9,10 +9,10 @@ import de.marcely.bedwars.api.arena.ArenaStatus;
 import de.marcely.bedwars.api.remote.RemoteAPI;
 import de.marcely.bedwars.api.remote.RemoteArena;
 import de.marcely.bedwars.api.remote.RemotePlayer;
-import dev.dejvokep.boostedyaml.YamlDocument;
 import org.bukkit.entity.Player;
 import pl.dejwideek.spectateaddon.color.ColorAPI;
 import pl.dejwideek.spectateaddon.SpectatePlugin;
+import pl.dejwideek.spectateaddon.configs.Config;
 
 @SuppressWarnings("ALL")
 public class SpectateCmd extends BaseCommand {
@@ -28,17 +28,17 @@ public class SpectateCmd extends BaseCommand {
     @Description("Watch player")
     public void spectate(Player player, String[] strings) {
         BedwarsAPI.onReady(() -> {
-            YamlDocument config = plugin.config;
+            Config config = plugin.config;
             ColorAPI colorApi = new ColorAPI();
 
-            String usageMsg = config.getString("messages.usage");
-            String yourselfMsg = config.getString("messages.yourself");
-            String teleportedMsg = config.getString("messages.teleported");
-            String endingMsg = config.getString("messages.already-ending");
-            String noInsideMsg = config.getString("messages.no-inside-arena");
-            String notFoundMsg = config.getString("messages.not-found");
-            String noPermsMsg = config.getString("messages.no-permission");
-            String permission = config.getString("permissions.spectate");
+            String usageMsg = config.MESSAGES.USAGE;
+            String yourselfMsg = config.MESSAGES.YOURSELF;
+            String teleportedMsg = config.MESSAGES.TELEPORTED;
+            String endingMsg = config.MESSAGES.ALREADY_ENDING;
+            String noInsideMsg = config.MESSAGES.NO_INSIDE_ARENA;
+            String notFoundMsg = config.MESSAGES.NOT_FOUND;
+            String noPermsMsg = config.MESSAGES.NO_PERMISSION;
+            String permission = config.PERMISSIONS.SPECTATE;
 
             if(player.hasPermission(permission)) {
                 if(strings.length == 0) {
