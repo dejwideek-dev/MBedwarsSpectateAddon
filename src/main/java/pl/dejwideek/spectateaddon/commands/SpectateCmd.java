@@ -82,8 +82,8 @@ public class SpectateCmd extends BaseCommand {
 
                                 if (status.equals(ArenaStatus.RUNNING)) {
                                     player.sendMessage(colorApi.process(teleportedMsg
-                                            .replaceAll("%player%", target == null ? "":target.getName())
-                                            .replaceAll("%arena%", as == null? "": as.getName())));
+                                            .replaceAll("%player%", target.getName())
+                                            .replaceAll("%arena%",  as.getName())));
                                     a.addSpectator(p);
                                 }
                                 if (status.equals(ArenaStatus.END_LOBBY)) {
