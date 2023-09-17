@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'pl.dejwideek'
-version '3.1.0-HOTFIX'
+version '3.2.0'
 
 repositories {
     mavenCentral()
@@ -24,7 +24,7 @@ dependencies {
     shadow localGroovy()
     shadow gradleApi()
     compileOnly 'org.spigotmc:spigot-api:1.20-R0.1-SNAPSHOT'
-    compileOnly 'de.marcely.bedwars:API:5.1.1'
+    compileOnly 'de.marcely.bedwars:API:5.3'
     implementation 'net.elytrium:java-commons:1.1.0-SNAPSHOT'
     implementation 'co.aikar:acf-paper:0.5.1-SNAPSHOT'
     implementation 'org.apache.commons:commons-lang3:3.0'
